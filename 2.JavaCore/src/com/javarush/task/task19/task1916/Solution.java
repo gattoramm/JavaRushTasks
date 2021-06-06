@@ -38,10 +38,8 @@ public class Solution {
                 mapFile2.put(count++, fileReader2.readLine());
             }
 
-            //
         }
     }
-
 
     public static enum Type {
         ADDED,        //добавлена новая строка
