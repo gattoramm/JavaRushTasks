@@ -25,7 +25,7 @@ public class Solution {
         // Возвращаем System.out старое значение
         String result = byteArrayOutputStream.toString();
         System.setOut(printStream);
-        String[] spliteesult = result.split(System.lineSeparator());
+        String[] splitedResult = result.split(System.lineSeparator());
         int count = 0;
 
         for(String item : splitedResult) {
