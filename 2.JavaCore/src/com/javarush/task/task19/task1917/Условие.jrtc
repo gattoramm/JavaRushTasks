@@ -1,6 +1,6 @@
 taskKey="com.javarush.task.task19.task1917"\n\nСвой FileWriter
 
-Реализовать логику FileConsoleWriter.
+Реализуй логику FileConsoleWriter.
 Класс FileConsoleWriter должен содержать приватное поле FileWriter fileWriter.
 Класс FileConsoleWriter должен содержать все конструкторы, которые инициализируют fileWriter для записи.
 Класс FileConsoleWriter должен содержать пять методов write и один метод close:
@@ -12,6 +12,7 @@ taskKey="com.javarush.task.task19.task1917"\n\nСвой FileWriter
 - public void close() throws IOException
 
 При записи данных в файл, FileConsoleWriter должен дублировать эти данные на консоль.
+Важно: нужно использовать 8-й уровень языка (java language level)!
 
 
 Требования:

@@ -13,7 +13,7 @@ public class Solution {
     public static void main(String[] args) {
         //исправь outputStream/inputStream в соответствии с путем к твоему реальному файлу
         try {
-            File your_file_name = File.createTempFile("your_file_name", null);
+            File your_file_name = File.createTempFile("D:\\10.txt", null);
             OutputStream outputStream = new FileOutputStream(your_file_name);
             InputStream inputStream = new FileInputStream(your_file_name);
 
@@ -73,6 +73,7 @@ public class Solution {
             //implement this method - реализуйте этот метод
             PrintWriter printWriter = new PrintWriter(outputStream);
             printWriter.println(this.name);
+
             if (this.assets.size() > 0) {
                 for (Asset current : this.assets)
                     printWriter.println(current.getName());

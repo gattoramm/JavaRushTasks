@@ -17,7 +17,10 @@ public class Solution {
             OutputStream outputStream = new FileOutputStream(your_file_name);
             InputStream inputStream = new FileInputStream(your_file_name);
 
-            Human ivanov = new Human("Ivanov", new Asset("home", 999_999.99), new Asset("car", 2999.99));
+            Human ivanov = new Human(
+                    "Ivanov",
+                    new Asset("home", 999_999.99),
+                    new Asset("car", 2999.99));
             ivanov.save(outputStream);
             outputStream.flush();
 
@@ -25,6 +28,11 @@ public class Solution {
             somePerson.load(inputStream);
             inputStream.close();
             //check here that ivanov equals to somePerson - проверьте тут, что ivanov и somePerson равны
+            System.out.println(somePerson.name);
+            for(Asset list: somePerson.assets) {
+                System.out.println(list.getName());
+                System.out.println(list.getPrice());
+            }
 
         } catch (IOException e) {
             //e.printStackTrace();
@@ -67,12 +75,49 @@ public class Solution {
             return result;
         }
 
-        public void save(OutputStream outputStream) throws Exception {
+        public void save(OutputStream outputStream){
             //implement this method - реализуйте этот метод
+            try(PrintWriter printWriter = new PrintWriter(outputStream, true)) {
+                printWriter.println(this.name);
+
+                if(!this.assets.isEmpty())
+                    printWriter.println(this.assets);
+            }
         }
 
         public void load(InputStream inputStream) throws Exception {
             //implement this method - реализуйте этот метод
+            try(BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream))) {
+                //Asset asset = new Asset();
+                this.name = bufferedReader.readLine();
+                String stringOfAssets = bufferedReader.readLine().replace(" ","");
+                stringOfAssets = stringOfAssets.substring(1, stringOfAssets.length() - 1);
+
+                List listOfAssets = List.of(stringOfAssets.split(","));
+
+                System.out.println(listOfAssets.getClass());
+                System.out.println(listOfAssets.get(0).getClass());
+                System.out.println(listOfAssets.get(1).getClass());
+                System.out.println("----------");
+                Asset xxx = (Asset) listOfAssets.get(0);
+                System.out.println(xxx.getClass());
+//                System.out.println(xxx.getName());
+//                System.out.println(xxx.getPrice());
+
+
+                System.out.println("----------");
+                for(Object list : listOfAssets) {
+                    System.out.println(list.getClass());
+                    System.out.println(listOfAssets.get(0));
+                    System.out.println(listOfAssets.get(1));
+                    System.out.println("----------");
+                    /*(Asset)list;
+                    this.assets.add(new Asset(list[0], list[1]));
+                    (Asset)list.ge
+                    assets.add((Asset) list);*/
+                }
+                System.out.println();
+            }
         }
     }
 }
