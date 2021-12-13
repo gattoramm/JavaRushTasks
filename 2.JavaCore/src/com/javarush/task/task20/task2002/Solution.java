@@ -24,15 +24,9 @@ public class Solution {
             User user1 = new User();
                 user1.setFirstName("Ivanov");
                 user1.setLastName("Ivan");
-                user1.setBirthDate(new Date(2000, 2, 13));
+                user1.setBirthDate(new GregorianCalendar(2000, Calendar.MARCH, 1).getTime());
                 user1.setMale(true);
                 user1.setCountry(User.Country.RUSSIA);
-            User user2 = new User();
-                user2.setFirstName("Ivanova");
-                user2.setLastName("Irina");
-                user2.setBirthDate(new Date(2000, 5, 3));
-                user2.setMale(false);
-                user2.setCountry(User.Country.UKRAINE);
 
             javaRush.users.add(user1);
             javaRush.save(outputStream);
@@ -42,6 +36,7 @@ public class Solution {
             loadedObject.load(inputStream);
             //here check that the javaRush object is equal to the loadedObject object -
             //проверьте тут, что javaRush и loadedObject равны
+            System.out.println(javaRush.equals(loadedObject));
 
             outputStream.close();
             inputStream.close();
@@ -58,23 +53,31 @@ public class Solution {
     public static class JavaRush {
         public List<User> users = new ArrayList<>();
 
-        public void save(OutputStream outputStream) throws Exception {
+        public void save(OutputStream outputStream){
             //implement this method - реализуйте этот метод
             try(PrintWriter printWriter = new PrintWriter(outputStream, true)) {
                 if(!this.users.isEmpty())
-                    printWriter.println(this.users);
+                    for(User currentUser : this.users) {
+                        printWriter.println(currentUser.getFirstName());
+                        printWriter.println(currentUser.getLastName());
+                        printWriter.println(currentUser.getBirthDate().getTime());
+                        printWriter.println(Boolean.parseBoolean(String.valueOf(currentUser.isMale())));
+                        printWriter.println(currentUser.getCountry());
+                    }
             }
         }
 
         public void load(InputStream inputStream) throws Exception {
             //implement this method - реализуйте этот метод
             try(BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream))) {
-                if(bufferedReader.ready()) {
-                    String readLineObject = bufferedReader.readLine();
-                    User user = new User();
-                    System.out.println(readLineObject.getClass());
-                    System.out.println();
-                    System.out.println();
+                while(bufferedReader.ready()) {
+                    User restoreUser = new User();
+                    restoreUser.setFirstName(bufferedReader.readLine());
+                    restoreUser.setLastName(bufferedReader.readLine());
+                    restoreUser.setBirthDate(new Date(Long.parseLong(bufferedReader.readLine())));
+                    restoreUser.setMale(Boolean.parseBoolean(bufferedReader.readLine()));
+                    restoreUser.setCountry(User.Country.valueOf(bufferedReader.readLine()));
+                    this.users.add(restoreUser);
                 }
             }
         }
