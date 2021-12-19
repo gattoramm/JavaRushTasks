@@ -1,5 +1,6 @@
 package com.javarush.task.task20.task2003;
 
+
 import java.io.*;
 import java.util.HashMap;
 import java.util.Map;
@@ -15,10 +16,16 @@ public class Solution {
 
     public static void save(OutputStream outputStream) throws Exception {
         //напишите тут ваш код
+
     }
 
     public static void load(InputStream inputStream) throws IOException {
         //напишите тут ваш код
+        try(BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream))) {
+            while (bufferedReader.ready()) {
+                runtimeStorage.put(bufferedReader.readLine(), bufferedReader.readLine());
+            }
+        }
     }
 
     public static void main(String[] args) {

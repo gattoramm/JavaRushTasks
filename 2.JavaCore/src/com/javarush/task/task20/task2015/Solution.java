@@ -9,8 +9,8 @@ import java.io.Serializable;
 Переопределение сериализации
 */
 
-public class Solution implements {
-    private Thread runner;
+public class Solution implements Serializable, Runnable{
+    transient private Thread runner;
     private int speed;
 
     public Solution(int speed) {
@@ -36,6 +36,7 @@ public class Solution implements {
 
     private void readObject(ObjectInputStream in) throws IOException, ClassNotFoundException {
         in.defaultReadObject();
+        new Thread(this).start();
     }
 
     public static void main(String[] args) {
