@@ -13,7 +13,7 @@ __*Про JavaRush*__
 [Профиль](https://javarush.ru/users/1539286)
 
 ## Квесты:
-* *[Java Syntax](1.JavaSyntax/src/com)*
-* *[Java Core](2.JavaCore/src/com)*
+* *[Java Syntax](1.JavaSyntax)*
+* *[Java Core](2.JavaCore)*
 * *Java Collections*
 * *Multithreading*
