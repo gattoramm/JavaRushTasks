@@ -2,8 +2,12 @@ package com.javarush.task.task16.task1605;
 
 import java.util.Date;
 
+/**
+ * Поговорим о музыке
+ * */
+
 public class Solution {
-    public static int delay = 1000;
+    public static long delay = 1000;
 
     public static void main(String[] args) {
         Thread violin = new Thread(new Violin("Player"));

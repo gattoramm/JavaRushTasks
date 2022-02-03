@@ -1,5 +1,9 @@
 package com.javarush.task.task02.task0202;
 
+/* 
+Откуда берутся Person?
+*/
+
 public class Solution {
     public static void main(String[] args) {
         // создаем переменную person типа Person (Person person) и объект
