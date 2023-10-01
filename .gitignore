@@ -1,8 +1,12 @@
-# Compiled class file
-*.class
 
-# Log file
+*.class
+.idea
+target
+out
+.gitattributes
+*.png
 *.log
+
 
 # BlueJ files
 *.ctxt
@@ -19,14 +23,7 @@
 *.tar.gz
 *.rar
 
-# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
-JavaRushPlugin.properties
-1.JavaSyntax/1.JavaSyntax.iml
-2.JavaCore/2.JavaCore.iml
-3.JavaMultithreading/3.JavaMultithreading.iml
-4.JavaCollections/4.JavaCollections.iml
-5.OnlineInternship/5.OnlineInternship.iml
-8.Games/8.Games.iml
-JavaRushPlugin.properties
-JavaRushTasks.iml
+
+*.properties
+*.iml
